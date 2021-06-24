@@ -20,7 +20,7 @@
       <div class="ui label">
         <i class="calendar plus icon"></i> Ano
       </div>
-      <input type="text" placeholder="Informe o Ano" v-model="veiculo.ano"/>
+      <input type="number" placeholder="Informe o Ano" v-model="veiculo.ano"/>
     </div>
 
     <div class="ui labeled input fluid">

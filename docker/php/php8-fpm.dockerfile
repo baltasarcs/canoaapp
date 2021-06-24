@@ -14,8 +14,6 @@ RUN apk add --no-cache --virtual .build-deps \
         bash \
         curl \
         git \
-        nodejs \
-        npm \
         mysql-client \
         postgresql-libs \
         libintl \
@@ -30,7 +28,6 @@ RUN apk add --no-cache --virtual .build-deps \
         pdo \
         pdo_mysql \
         pdo_pgsql \
-        pdo_sqlite \
         pcntl \
         tokenizer \
         xml \

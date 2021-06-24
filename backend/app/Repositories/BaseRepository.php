@@ -26,7 +26,7 @@ class BaseRepository
         return $this->obj->where($column, $value)->get();
     }
 
-    public function save(array $param): bool
+    public function save(array $param)
     {
         return $this->obj->create($param);
     }

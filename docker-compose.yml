@@ -1,28 +1,22 @@
 version: '3'
 
 services:
-    vueapp:
-        image: node:latest
-        container_name: vueapp
-        volumes:
-            - ./frontend:/
-        ports:
-            - 80:8000
-        networks:
-            - docker-network
-        depends_on:
-            - php
+
     nginx:
         image: nginx:latest
         container_name: nginx
         volumes:
             - ./docker/nginx/conf.d:/etc/nginx/conf.d/
+            - ./backend:/var/www
         ports:
-            - 8080:80
+            - 80:80
+            - 8080:8080
         depends_on:
             - php
+            - npmvue
         links:
             - php
+            - npmvue
         networks:
             - docker-network
 
@@ -49,14 +43,27 @@ services:
         networks:
             - docker-network
 
+    npmvue:
+        container_name: vue
+        image: npmvue
+        build: ./docker/npm
+        restart: unless-stopped
+        volumes:
+            - ./frontend:/var/www
+        networks:
+            - docker-network
+        depends_on:
+            - php
+
     mysql:
         image: mysql:8
         container_name: mysql8
         restart: always
-        ports:
-            - "${DB_PORT}:3306"
         volumes:
             - ./docker/mysql/data:/var/lib/mysql
+            - ./docker/mysql/entrypoint:/docker-entrypoint-initdb.d
+        ports:
+            - "${DB_PORT}:3306"
         environment:
             - MYSQL_USER=${DB_USERNAME}
             - MYSQL_PASSWORD=${DB_PASSWORD}

@@ -40,7 +40,7 @@ class VehicleController extends Controller
             return response()->json(['error' => $response], 422);
         }
 
-        return response()->json('Veículo inserido!', 200);
+        return response()->json(['id' => $response->id], 200);
     }
 
     /**

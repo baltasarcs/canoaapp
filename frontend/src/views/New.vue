@@ -15,9 +15,9 @@ export default {
   },
   methods: {
     createOrUpdate: async function(veiculo) {
-      const res = await api.createtask(veiculo);
+      const res = await api.createvehicle(veiculo);
       this.flash('Veículo Adicionado!', 'success');
-      this.$router.push(`/veiculo/${res._id}`);
+      this.$router.push(`/veiculo/${res.id}`);
     }
   }
 };
