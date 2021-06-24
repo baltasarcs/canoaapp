@@ -30,7 +30,12 @@ docker-compose exec mysql mysql -u root -p -e "CREATE DATABASE canoatest"
 docker-compose exec php php artisan migrate --seed
 ```
 
-### Open localhost
+### Link to vueapp
 ```
 http://127.0.0.1
+```
+
+### Link to API
+```
+http://127.0.0.1:8080/api/veiculos
 ```
