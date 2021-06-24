@@ -10,7 +10,7 @@ cp /backend/.env_example /backend/.env
 cp /backend/.env .
 ```
 
-### Run composer up
+### Run docker-compose
 ```
 docker-compose up
 ```
